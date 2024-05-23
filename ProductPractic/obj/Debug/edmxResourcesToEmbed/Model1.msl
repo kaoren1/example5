@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ProductPractic5ModelContainer" CdmEntityContainer="ProductPractic5Entities">
+    <EntitySetMapping Name="Colours">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Colours">
+        <MappingFragment StoreEntitySet="Colours">
+          <ScalarProperty Name="ID_Colour" ColumnName="ID_Colour" />
+          <ScalarProperty Name="ColourName" ColumnName="ColourName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="Login1" ColumnName="Login1" />
+          <ScalarProperty Name="Password1" ColumnName="Password1" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeSurname" ColumnName="EmployeeSurname" />
+          <ScalarProperty Name="EmployeeMiddleName" ColumnName="EmployeeMiddleName" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Furniture">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Furniture">
+        <MappingFragment StoreEntitySet="Furniture">
+          <ScalarProperty Name="ID_Furniture" ColumnName="ID_Furniture" />
+          <ScalarProperty Name="FurnitureName" ColumnName="FurnitureName" />
+          <ScalarProperty Name="AmountStore" ColumnName="AmountStore" />
+          <ScalarProperty Name="PriceInRUB" ColumnName="PriceInRUB" />
+          <ScalarProperty Name="Material_ID" ColumnName="Material_ID" />
+          <ScalarProperty Name="Style_ID" ColumnName="Style_ID" />
+          <ScalarProperty Name="Size_ID" ColumnName="Size_ID" />
+          <ScalarProperty Name="Colour_ID" ColumnName="Colour_ID" />
+          <ScalarProperty Name="Provider_ID" ColumnName="Provider_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materials">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Materials">
+        <MappingFragment StoreEntitySet="Materials">
+          <ScalarProperty Name="ID_Material" ColumnName="ID_Material" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="ProductPractic5Model.OrderDetails">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="ID_OrderDetails" ColumnName="ID_OrderDetails" />
+          <ScalarProperty Name="Furniture_ID" ColumnName="Furniture_ID" />
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+          <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="PriceOrderRUB" ColumnName="PriceOrderRUB" />
+          <ScalarProperty Name="EnterRUB" ColumnName="EnterRUB" />
+          <ScalarProperty Name="ChangeRUB" ColumnName="ChangeRUB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Payments">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="ID_Payment" ColumnName="ID_Payment" />
+          <ScalarProperty Name="PaymentName" ColumnName="PaymentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Providers">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Providers">
+        <MappingFragment StoreEntitySet="Providers">
+          <ScalarProperty Name="ID_Provider" ColumnName="ID_Provider" />
+          <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role1">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Role1">
+        <MappingFragment StoreEntitySet="Role1">
+          <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+          <ScalarProperty Name="Name1" ColumnName="Name1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Size">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Size">
+        <MappingFragment StoreEntitySet="Size">
+          <ScalarProperty Name="ID_Size" ColumnName="ID_Size" />
+          <ScalarProperty Name="SizeName" ColumnName="SizeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Styles">
+      <EntityTypeMapping TypeName="ProductPractic5Model.Styles">
+        <MappingFragment StoreEntitySet="Styles">
+          <ScalarProperty Name="ID_Style" ColumnName="ID_Style" />
+          <ScalarProperty Name="StyleName" ColumnName="StyleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

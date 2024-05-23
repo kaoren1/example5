@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ProductPractic5Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Colours">
+    <Key>
+      <PropertyRef Name="ID_Colour" />
+    </Key>
+    <Property Name="ID_Colour" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ColourName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID_Employee" />
+    </Key>
+    <Property Name="ID_Employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login1" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password1" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EmployeeName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EmployeeSurname" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EmployeeMiddleName" Type="varchar" MaxLength="100" />
+    <Property Name="Role_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Furniture">
+    <Key>
+      <PropertyRef Name="ID_Furniture" />
+    </Key>
+    <Property Name="ID_Furniture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FurnitureName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="AmountStore" Type="int" Nullable="false" />
+    <Property Name="PriceInRUB" Type="float" Nullable="false" />
+    <Property Name="Material_ID" Type="int" Nullable="false" />
+    <Property Name="Style_ID" Type="int" Nullable="false" />
+    <Property Name="Size_ID" Type="int" Nullable="false" />
+    <Property Name="Colour_ID" Type="int" Nullable="false" />
+    <Property Name="Provider_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materials">
+    <Key>
+      <PropertyRef Name="ID_Material" />
+    </Key>
+    <Property Name="ID_Material" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaterialName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="ID_OrderDetails" />
+    </Key>
+    <Property Name="ID_OrderDetails" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Furniture_ID" Type="int" Nullable="false" />
+    <Property Name="Order_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="ID_Order" />
+    </Key>
+    <Property Name="ID_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Payment_ID" Type="int" Nullable="false" />
+    <Property Name="Employee_ID" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="date" Nullable="false" />
+    <Property Name="PriceOrderRUB" Type="float" Nullable="false" />
+    <Property Name="EnterRUB" Type="float" Nullable="false" />
+    <Property Name="ChangeRUB" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="ID_Payment" />
+    </Key>
+    <Property Name="ID_Payment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Providers">
+    <Key>
+      <PropertyRef Name="ID_Provider" />
+    </Key>
+    <Property Name="ID_Provider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProviderName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role1">
+    <Key>
+      <PropertyRef Name="ID_Role" />
+    </Key>
+    <Property Name="ID_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name1" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="ID_Size" />
+    </Key>
+    <Property Name="ID_Size" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SizeName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Styles">
+    <Key>
+      <PropertyRef Name="ID_Style" />
+    </Key>
+    <Property Name="ID_Style" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StyleName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Employee__Role_I__4BAC3F29">
+    <End Role="Role1" Type="Self.Role1" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role1">
+        <PropertyRef Name="ID_Role" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Role_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Furniture__Colou__5AEE82B9">
+    <End Role="Colours" Type="Self.Colours" Multiplicity="1" />
+    <End Role="Furniture" Type="Self.Furniture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colours">
+        <PropertyRef Name="ID_Colour" />
+      </Principal>
+      <Dependent Role="Furniture">
+        <PropertyRef Name="Colour_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Furniture__Mater__5812160E">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="Furniture" Type="Self.Furniture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="ID_Material" />
+      </Principal>
+      <Dependent Role="Furniture">
+        <PropertyRef Name="Material_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Furniture__Provi__5BE2A6F2">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+    <End Role="Furniture" Type="Self.Furniture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID_Provider" />
+      </Principal>
+      <Dependent Role="Furniture">
+        <PropertyRef Name="Provider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Furniture__Size___59FA5E80">
+    <End Role="Size" Type="Self.Size" Multiplicity="1" />
+    <End Role="Furniture" Type="Self.Furniture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="ID_Size" />
+      </Principal>
+      <Dependent Role="Furniture">
+        <PropertyRef Name="Size_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Furniture__Style__59063A47">
+    <End Role="Styles" Type="Self.Styles" Multiplicity="1" />
+    <End Role="Furniture" Type="Self.Furniture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Styles">
+        <PropertyRef Name="ID_Style" />
+      </Principal>
+      <Dependent Role="Furniture">
+        <PropertyRef Name="Style_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Furni__6477ECF3">
+    <End Role="Furniture" Type="Self.Furniture" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Furniture">
+        <PropertyRef Name="ID_Furniture" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="Furniture_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__656C112C">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="ID_Order" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="Order_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__Employee__619B8048">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="Employee_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__Payment___60A75C0F">
+    <End Role="Payments" Type="Self.Payments" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payments">
+        <PropertyRef Name="ID_Payment" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="Payment_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ProductPractic5ModelContainer">
+    <EntitySet Name="Colours" EntityType="Self.Colours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Furniture" EntityType="Self.Furniture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role1" EntityType="Self.Role1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Styles" EntityType="Self.Styles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Employee__Role_I__4BAC3F29" Association="Self.FK__Employee__Role_I__4BAC3F29">
+      <End Role="Role1" EntitySet="Role1" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Furniture__Colou__5AEE82B9" Association="Self.FK__Furniture__Colou__5AEE82B9">
+      <End Role="Colours" EntitySet="Colours" />
+      <End Role="Furniture" EntitySet="Furniture" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Furniture__Mater__5812160E" Association="Self.FK__Furniture__Mater__5812160E">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="Furniture" EntitySet="Furniture" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Furniture__Provi__5BE2A6F2" Association="Self.FK__Furniture__Provi__5BE2A6F2">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="Furniture" EntitySet="Furniture" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Furniture__Size___59FA5E80" Association="Self.FK__Furniture__Size___59FA5E80">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="Furniture" EntitySet="Furniture" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Furniture__Style__59063A47" Association="Self.FK__Furniture__Style__59063A47">
+      <End Role="Styles" EntitySet="Styles" />
+      <End Role="Furniture" EntitySet="Furniture" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Furni__6477ECF3" Association="Self.FK__OrderDeta__Furni__6477ECF3">
+      <End Role="Furniture" EntitySet="Furniture" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__656C112C" Association="Self.FK__OrderDeta__Order__656C112C">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__Employee__619B8048" Association="Self.FK__Orders__Employee__619B8048">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__Payment___60A75C0F" Association="Self.FK__Orders__Payment___60A75C0F">
+      <End Role="Payments" EntitySet="Payments" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
